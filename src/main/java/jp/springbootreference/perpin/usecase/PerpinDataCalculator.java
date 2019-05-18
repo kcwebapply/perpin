@@ -4,21 +4,31 @@ package jp.springbootreference.perpin.usecase;
 import jp.springbootreference.perpin.domain.model.AppStatus;
 import jp.springbootreference.perpin.domain.model.PerpinPerformanceDto;
 
+import java.util.HashMap;
+import java.util.List;
+import java.util.stream.Collectors;
+
 public class PerpinDataCalculator {
 
-    public static PerpinPerformanceDto calc(AppStatus firstStatus, AppStatus lastStatus){
+    public static List<PerpinPerformanceDto> calc(HashMap<Integer, AppStatus> appStatusHashMap){
 
-        long elapsedTime = lastStatus.getExecutedTime() - firstStatus.getExecutedTime();
+        return appStatusHashMap.entrySet().stream().map(
+                e -> generateDto(e.getValue())
+        ).collect(Collectors.toList());
+    }
 
-        long usedDuring = lastStatus.getUsedMemory() - firstStatus.getUsedMemory();
+    private static PerpinPerformanceDto generateDto(AppStatus status){
+        long Time = status.getExecutedTime();
 
-        long maxMemory = lastStatus.getFreeMemory() + lastStatus.getUsedMemory();
+        long usedDuring =  status.getUsedMemory();
+
+        long maxMemory = status.getFreeMemory() + status.getUsedMemory();
 
         double ratio = (usedDuring  * 100 / (double)(maxMemory));
 
-        double cpuUpDownPercentage = lastStatus.getCpuPercentage() - firstStatus.getCpuPercentage();
+        double cpuPercentage = status.getCpuPercentage();
 
-        return new PerpinPerformanceDto(elapsedTime,usedDuring,maxMemory,ratio,cpuUpDownPercentage);
+        return new PerpinPerformanceDto(Time,usedDuring,maxMemory,ratio,cpuPercentage);
     }
 
 }
