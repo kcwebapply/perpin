@@ -65,9 +65,9 @@ cpu percentage:27.220122 %
 
 ```xml
 <dependency>
-		<groupId>jp.spring-boot-reference</groupId>
-		<artifactId>perpin</artifactId>
-		<version>1.0.0</version>
+	<groupId>jp.spring-boot-reference</groupId>
+	<artifactId>perpin</artifactId>
+	<version>1.0.0</version>
 </dependency>
 
 ```
