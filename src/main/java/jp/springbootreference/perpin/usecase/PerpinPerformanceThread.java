@@ -15,6 +15,8 @@ public class PerpinPerformanceThread extends Thread {
 
     private int statusIndex = 0;
 
+    long intialTime = System.currentTimeMillis();
+
     @Override
     public void run(){
 
@@ -40,7 +42,7 @@ public class PerpinPerformanceThread extends Thread {
     }
 
     private AppStatus getStatus(){
-        long startTime = System.currentTimeMillis();
+        long startTime = System.currentTimeMillis() - intialTime;
         long freeMemory = MemoryLibraryWrapper.getFreeMemory();
         long usedMemory = MemoryLibraryWrapper.getUsedMemory();
         double cpuPercentage = CpuLibraryWrapper.getProcessCpuPercentage();

@@ -3,12 +3,12 @@ package jp.springbootreference.perpin.domain.model;
 public class PerpinPerformanceDto {
 
 
-    public PerpinPerformanceDto(long elapsedTime, long usedMemory, long maxMemory, double memoryUsedRation, double cpuUpDownPercentage){
+    public PerpinPerformanceDto(long elapsedTime, long usedMemory, long maxMemory, double memoryUsedPercentage, double cpuPercentage){
         this.elapsedTime = elapsedTime;
         this.usedMemory = usedMemory;
         this.maxMemory = maxMemory;
-        this.memoryUsedRation = memoryUsedRation;
-        this.cpuUpDownPercentage = cpuUpDownPercentage;
+        this.memoryUsedPercentage = memoryUsedPercentage;
+        this.cpuPercentage = cpuPercentage;
     }
 
     private long elapsedTime;
@@ -17,9 +17,9 @@ public class PerpinPerformanceDto {
 
     private long maxMemory;
 
-    private double memoryUsedRation;
+    private double memoryUsedPercentage;
 
-    private double cpuUpDownPercentage;
+    private double cpuPercentage;
 
     public long getElapsedTime() {
         return elapsedTime;
@@ -45,19 +45,19 @@ public class PerpinPerformanceDto {
         this.maxMemory = maxMemory;
     }
 
-    public double getMemoryUsedRation() {
-        return memoryUsedRation;
+    public double getMemoryUsedPercentage() {
+        return memoryUsedPercentage;
     }
 
-    public void setMemoryUsedRation(double memoryUsedRation) {
-        this.memoryUsedRation = memoryUsedRation;
+    public void setMemoryUsedPercentage(double memoryUsedPercentage) {
+        this.memoryUsedPercentage = memoryUsedPercentage;
     }
 
-    public double getCpuUpDownPercentage() {
-        return cpuUpDownPercentage;
+    public double getCpuPercentage() {
+        return cpuPercentage;
     }
 
-    public void setCpuUpDownPercentage(double cpuUpDownPercentage) {
-        this.cpuUpDownPercentage = cpuUpDownPercentage;
+    public void setCpuPercentage(double cpuPercentage) {
+        this.cpuPercentage = cpuPercentage;
     }
 }
