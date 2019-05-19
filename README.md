@@ -43,27 +43,26 @@ Perpin.getPin(1);
 ```
 
 
-when `Perpin.getPin(#id);` called,  `Perpin` stopped performance record and show results.
+when `Perpin.getPin(#id);` called,  `Perpin` stopped performance record and show results with `Json Format`.
 
 
 ```terminal
-2019-05-19 20:16:22.143  INFO 51804 --- [           main] j.s.perpin.view.PerPinView               : 
-{ 'id': 1, 'time':'0 ms', 'memory' : {'used':'86102 KB','max':'223744 KB','used percentage':'38.482373 %'},'cpu percentage':'0.000000 %'}
-{ 'id': 1, 'time':'105 ms', 'memory' : {'used':'88754 KB','max':'223744 KB','used percentage':'39.667656 %'},'cpu percentage':'55.749825 %'}
-{ 'id': 1, 'time':'206 ms', 'memory' : {'used':'90080 KB','max':'223744 KB','used percentage':'40.260297 %'},'cpu percentage':'13.720317 %'}
-{ 'id': 1, 'time':'310 ms', 'memory' : {'used':'92733 KB','max':'223744 KB','used percentage':'41.446028 %'},'cpu percentage':'21.916147 %'}
-{ 'id': 1, 'time':'414 ms', 'memory' : {'used':'96711 KB','max':'223744 KB','used percentage':'43.223952 %'},'cpu percentage':'25.226762 %'}
-{ 'id': 1, 'time':'514 ms', 'memory' : {'used':'100689 KB','max':'223744 KB','used percentage':'45.001877 %'},'cpu percentage':'24.126667 %'}
-{ 'id': 1, 'time':'616 ms', 'memory' : {'used':'103342 KB','max':'223744 KB','used percentage':'46.187607 %'},'cpu percentage':'19.413637 %'}
-{ 'id': 1, 'time':'716 ms', 'memory' : {'used':'107320 KB','max':'223744 KB','used percentage':'47.965532 %'},'cpu percentage':'36.593352 %'}
-{ 'id': 1, 'time':'817 ms', 'memory' : {'used':'111298 KB','max':'223744 KB','used percentage':'49.743457 %'},'cpu percentage':'24.857900 %'}
-{ 'id': 1, 'time':'918 ms', 'memory' : {'used':'113951 KB','max':'223744 KB','used percentage':'50.929187 %'},'cpu percentage':'22.478443 %'}
-{ 'id': 1, 'time':'1019 ms', 'memory' : {'used':'117929 KB','max':'223744 KB','used percentage':'52.707112 %'},'cpu percentage':'24.801722 %'}
-{ 'id': 1, 'time':'1120 ms', 'memory' : {'used':'121907 KB','max':'223744 KB','used percentage':'54.485036 %'},'cpu percentage':'24.886078 %'}
-{ 'id': 1, 'time':'1155 ms', 'memory' : {'used':'123234 KB','max':'223744 KB','used percentage':'55.078125 %'},'cpu percentage':'23.788227 %'}
-overall
-------------------------------------------------------------------------------------------------------------------------------
-{{ 'id': 1, 'time':'1155 ms','memoryMaxpercentage':'55.078125 %','cpuMaxPercentage':'55.7498 %','cpuAverage':'24.427621 %'}
+2019-05-19 22:41:54.908  INFO 53736 --- [           main] j.s.perpin.view.PerPinView               : { 
+"units":{"time":"ms","used":"KB","percentage:":"%"},  "statuses":
+[{ "id": 1, " time ":0 ,  "memory" : {"used" : 86547 , "max" : 224768 , "used percentage" : 38.505036 } , "cpu percentage" : 0.000000 },
+{ "id": 1, " time ":103 ,  "memory" : {"used" : 87873 , "max" : 224768 , "used percentage" : 39.094978 } , "cpu percentage" : 53.550941 },
+{ "id": 1, " time ":207 ,  "memory" : {"used" : 91851 , "max" : 224768 , "used percentage" : 40.864803 } , "cpu percentage" : 41.293298 },
+{ "id": 1, " time ":309 ,  "memory" : {"used" : 94503 , "max" : 224768 , "used percentage" : 42.044686 } , "cpu percentage" : 24.509929 },
+{ "id": 1, " time ":410 ,  "memory" : {"used" : 98482 , "max" : 224768 , "used percentage" : 43.814956 } , "cpu percentage" : 21.132665 },
+{ "id": 1, " time ":511 ,  "memory" : {"used" : 102460 , "max" : 224768 , "used percentage" : 45.584781 } , "cpu percentage" : 24.673425 },
+{ "id": 1, " time ":611 ,  "memory" : {"used" : 105112 , "max" : 224768 , "used percentage" : 46.764664 } , "cpu percentage" : 24.784887 },
+{ "id": 1, " time ":712 ,  "memory" : {"used" : 107764 , "max" : 224768 , "used percentage" : 47.944547 } , "cpu percentage" : 34.039377 },
+{ "id": 1, " time ":816 ,  "memory" : {"used" : 111743 , "max" : 224768 , "used percentage" : 49.714817 } , "cpu percentage" : 24.486800 },
+{ "id": 1, " time ":918 ,  "memory" : {"used" : 115721 , "max" : 224768 , "used percentage" : 51.484642 } , "cpu percentage" : 24.512454 },
+{ "id": 1, " time ":1018 ,  "memory" : {"used" : 119700 , "max" : 224768 , "used percentage" : 53.254912 } , "cpu percentage" : 24.196307 },
+{ "id": 1, " time ":1120 ,  "memory" : {"used" : 122352 , "max" : 224768 , "used percentage" : 54.434795 } , "cpu percentage" : 24.329219 },
+{ "id": 1, " time ":1156 ,  "memory" : {"used" : 123678 , "max" : 224768 , "used percentage" : 55.024737 } , "cpu percentage" : 24.683728 }] , 
+"overall":{ "id": 1, "time":1156,"memoryMaxpercentage":55.024737,"cpuMaxPercentage":53.550941,"cpuAverage":26.630233} }
 
 ```
 
