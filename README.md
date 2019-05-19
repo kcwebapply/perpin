@@ -2,24 +2,26 @@
 
 # perpin
 
+![apache licensed](https://img.shields.io/badge/License-Apache_2.0-d94c32.svg)
+![Java](https://img.shields.io/badge/Language-Java-f88909.svg)
+[![Maven Central](https://maven-badges.herokuapp.com/maven-central/jp.spring-boot-reference/perpin/badge.svg)](https://maven-badges.herokuapp.com/maven-central/jp.spring-boot-reference/perpin)
 
-perpin is java performance measure tool between code and code.
+
+perpin is java performance record tool between code and code.
 
 
 ## about
 
-you can measure application performance between code on code by perpin.
+you can record application performance between code on code by perpin.
 
-`Perpin.setPin` starts measuring .
-
-`Perpin.getPin` finish measuring and show results.
+perpin run on background thread Asynchronously and continue to record performance until you stop .
 
 
 ## usage
 
-1. call  `Perpin.setPin(#id)` . Perpin measure performance internally. 
+1. call  `Perpin.setPin(#id)` . Perpin record performance internally. 
 
-2. you can write code that you want to measure.
+2. you can write code that you want to record.
 
 3. call `Perpin.getPin(#id)` to show result.
 
@@ -38,11 +40,10 @@ for(i = 0;i < 10000; i++){
 
 // view result of performance measurance between `Perpin.setPin(1)` and `Perpin.getPin(1)`
 Perpin.getPin(1);
-
 ```
 
 
-when `Perpin.getPin(#id);` called,  `Perpin` stopped performance measurance and show results.
+when `Perpin.getPin(#id);` called,  `Perpin` stopped performance record and show results.
 
 
 ```terminal
@@ -60,7 +61,9 @@ when `Perpin.getPin(#id);` called,  `Perpin` stopped performance measurance and 
 { 'id': 1, 'time':'1019 ms', 'memory' : {'used':'117929 KB','max':'223744 KB','used percentage':'52.707112 %'},'cpu percentage':'24.801722 %'}
 { 'id': 1, 'time':'1120 ms', 'memory' : {'used':'121907 KB','max':'223744 KB','used percentage':'54.485036 %'},'cpu percentage':'24.886078 %'}
 { 'id': 1, 'time':'1155 ms', 'memory' : {'used':'123234 KB','max':'223744 KB','used percentage':'55.078125 %'},'cpu percentage':'23.788227 %'}
-overall:{{ 'id': 1, 'time':'1155 ms','memoryMaxpercentage':'55.078125 %','cpuMaxPercentage':'55.7498 %','cpuAverage':'24.427621 %'}
+overall
+------------------------------------------------------------------------------------------------------------------------------
+{{ 'id': 1, 'time':'1155 ms','memoryMaxpercentage':'55.078125 %','cpuMaxPercentage':'55.7498 %','cpuAverage':'24.427621 %'}
 
 ```
 
@@ -71,7 +74,7 @@ overall:{{ 'id': 1, 'time':'1155 ms','memoryMaxpercentage':'55.078125 %','cpuMax
 <dependency>
 	<groupId>jp.spring-boot-reference</groupId>
 	<artifactId>perpin</artifactId>
-	<version>1.0.0</version>
+	<version>1.0.1</version>
 </dependency>
 
 ```
