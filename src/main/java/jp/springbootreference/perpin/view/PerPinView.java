@@ -12,20 +12,25 @@ public class PerPinView {
 
     public static Logger logger = LoggerFactory.getLogger(PerPinView.class);
 
+    private static final String unitsExpression = "{" +
+            "\"time\":\"ms\","+
+            "\"used\":\"KB\"," +
+            "\"percentage:\":\"%\""+
+            "}";
 
     private static final String dataFormat =
-            "{ \"id\": %d, \"time\":\"%d ms\","+
+            "{ \"id\": %d, \"time\":\"%d \","+
             " \"memory\" : {" +
-            "\"used\":\"%d KB\","+
-            "\"max\":\"%d KB\","+
-            "\"used percentage\":\"%f %%\"},"+
-            "\"cpu percentage\":\"%f %%\"}";
+            "\"used\":\"%d\","+
+            "\"max\":\"%d\","+
+            "\"used percentage\":\"%f\"},"+
+            "\"cpu percentage\":\"%f\"}";
 
     private static final String SummaryLog =
-                    "{ \"id\": %d, \"time\":\"%d ms\","+
-                    "\"memoryMaxpercentage\":\"%f %%\","+
-                    "\"cpuMaxPercentage\":\"%f %%\","+
-                    "\"cpuAverage\":\"%f %%\"}";
+                    "{ \"id\": %d, \"time\":\"%d\","+
+                    "\"memoryMaxpercentage\":\"%f\","+
+                    "\"cpuMaxPercentage\":\"%f\","+
+                    "\"cpuAverage\":\"%f\"}";
 
     public static void PerPinView(int id , PerpinViewDto perpinViewDto){
 
@@ -45,7 +50,8 @@ public class PerPinView {
                 perpinViewDto.getAverageCpuPercentage()*100);
 
         final String outputLog = String.format(
-                "{ \"statuses\":\n[%s], \n\"overall\":%s}", statusLogss,summaryLog
+                "{ \"statuses\":\n[%s], \n\"overall\":%s, \n\"units\":%s}",
+                statusLogss,summaryLog,unitsExpression
         );
         logger.info(outputLog);
 
