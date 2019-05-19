@@ -27,6 +27,7 @@ perpin run on background thread Asynchronously and continue to record performanc
 
 ```Java
 
+// start recording performance on background
 Perpin.setPin(1);
 
 // implementation that you want to measure.
