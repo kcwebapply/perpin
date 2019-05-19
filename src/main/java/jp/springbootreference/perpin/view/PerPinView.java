@@ -1,6 +1,6 @@
 package jp.springbootreference.perpin.view;
 
-import jp.springbootreference.perpin.domain.model.PerpinPerformanceDto;
+
 import jp.springbootreference.perpin.domain.model.PerpinViewDto;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -22,7 +22,9 @@ public class PerPinView {
             "'cpu percentage':'%f %%'}";
 
     private static final String SummaryLog =
-            "{{ 'id': %d, 'time':'%d ms',"+
+            "overall\n" +
+                    "----------------------------------------------------------------------------------------------------------------\n" +
+                    "{{ 'id': %d, 'time':'%d ms',"+
                     "'memoryMaxpercentage':'%f %%',"+
                     "'cpuMaxPercentage':'%f %%',"+
                     "'cpuAverage':'%f %%'}";
@@ -41,10 +43,10 @@ public class PerPinView {
         final String logStrings = String.join("\n",dtoLogs);
         final String summary = String.format(SummaryLog, id, perpinViewDto.getExecutionTime(),
                 perpinViewDto.getMaxUsedMemoryPercentage(),
-                perpinViewDto.getMaxCpuPercentage(),
+                perpinViewDto.getMaxCpuPercentage()*100,
                 perpinViewDto.getAverageCpuPercentage()*100);
 
-        logger.info(logStrings +"\n"+ summary);
+        logger.info("\n"+logStrings +"\n"+ summary);
 
     }
 }

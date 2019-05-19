@@ -15,7 +15,10 @@ public class PerpinPerformanceThread extends Thread {
 
     private int statusIndex = 0;
 
-    long intialTime = System.currentTimeMillis();
+    private long initialTime = System.currentTimeMillis();
+
+    private static int SLEEP_TIME = 100;
+
 
     @Override
     public void run(){
@@ -25,7 +28,7 @@ public class PerpinPerformanceThread extends Thread {
                 AppStatus status = getStatus();
                 appStatusChart.put(statusIndex,status);
                 statusIndex++;
-                this.sleep(100);
+                this.sleep(SLEEP_TIME);
             } catch (InterruptedException e) {
                 // to stop performance measurance.
                running = false;
@@ -34,6 +37,10 @@ public class PerpinPerformanceThread extends Thread {
 
     }
 
+    public void stopMonitoring(){
+        this.running = false;
+        this.stop();
+    }
 
     public HashMap<Integer, AppStatus> getStatusChart() {
         AppStatus status = getStatus();
@@ -42,7 +49,7 @@ public class PerpinPerformanceThread extends Thread {
     }
 
     private AppStatus getStatus(){
-        long startTime = System.currentTimeMillis() - intialTime;
+        long startTime = System.currentTimeMillis() - initialTime;
         long freeMemory = MemoryLibraryWrapper.getFreeMemory();
         long usedMemory = MemoryLibraryWrapper.getUsedMemory();
         double cpuPercentage = CpuLibraryWrapper.getProcessCpuPercentage();

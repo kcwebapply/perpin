@@ -11,22 +11,28 @@ public class PerpinPerformanceMonitor {
 
 
     public static void monitor(int id){
+
         if(perpinThreadMap.containsKey(id)){
             throw new PerpinException(String.format("Perpin Context Error! thread with context-id &d already exists.",id));
         }
+
         PerpinPerformanceThread t = new PerpinPerformanceThread();
         perpinThreadMap.put(id,t);
+
         t.start();
     }
 
 
     public static HashMap<Integer,AppStatus> getStatusAndStopMonitoring(int id){
         PerpinPerformanceThread thread = perpinThreadMap.get(id);
+
         if(thread==null){
             throw new PerpinException(String.format("Perpin Context Error! thread with context-id &d doesn'texists.",id));
         }
-        thread.stop();
+
+        thread.stopMonitoring();
         perpinThreadMap.remove(id);
+
         HashMap<Integer, AppStatus> statusChart = thread.getStatusChart();
         return statusChart;
     }

@@ -10,7 +10,11 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 public class PerpinDataCalculator {
-
+    /**
+     * calc() generate Dto which is needed for view.
+     * @param appStatusHashMap
+     * @return
+     */
     public static PerpinViewDto calc(HashMap<Integer, AppStatus> appStatusHashMap){
 
 
@@ -31,6 +35,8 @@ public class PerpinDataCalculator {
 
         // max value of cpu used percentage.
         final double averageCpuPercentage = getAverageCpuPercentage(dtoList);
+
+
         return new PerpinViewDto(dtoList,executionIime,maxUsedMemoryPercentage,maxCpuPercentage,averageCpuPercentage);
     }
 
@@ -77,7 +83,7 @@ public class PerpinDataCalculator {
     }
 
     /**
-     * getMaxUsedMemoryRatio return max value of all of memory used ration data.
+     * getMaxUsedMemoryRatio() return max value of all of memory used ration data.
      * @param dtoList
      * @return maxusedMemoryRationValue
      */
@@ -85,7 +91,11 @@ public class PerpinDataCalculator {
         return dtoList.stream().mapToDouble(dto -> dto.getCpuPercentage()).sum()/dtoList.size();
     }
 
-
+    /**
+     * generateDto() generate Dto which have memory percentage and so on.
+     * @param status
+     * @return
+     */
     private static PerpinPerformanceDto generateDto(AppStatus status){
         long Time = status.getExecutedTime();
 
