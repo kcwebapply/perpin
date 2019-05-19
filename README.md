@@ -33,8 +33,7 @@ Perpin.setPin(1);
 int i;
 int sum = 0;
 for(i = 0;i < 10000; i++){
-  Mock mock = new Mock(i);
-  System.out.println(mock);
+  System.out.println(new Object());
   sum += i;
 }
 
