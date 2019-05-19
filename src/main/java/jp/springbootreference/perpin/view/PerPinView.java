@@ -14,20 +14,18 @@ public class PerPinView {
 
 
     private static final String dataFormat =
-            "{ 'id': %d, 'time':'%d ms',"+
-            " 'memory' : {" +
-            "'used':'%d KB',"+
-            "'max':'%d KB',"+
-            "'used percentage':'%f %%'},"+
-            "'cpu percentage':'%f %%'}";
+            "{ \"id\": %d, \"time\":\"%d ms\","+
+            " \"memory\" : {" +
+            "\"used\":\"%d KB\","+
+            "\"max\":\"%d KB\","+
+            "\"used percentage\":\"%f %%\"},"+
+            "\"cpu percentage\":\"%f %%\"}";
 
     private static final String SummaryLog =
-            "overall\n" +
-                    "----------------------------------------------------------------------------------------------------------------\n" +
-                    "{{ 'id': %d, 'time':'%d ms',"+
-                    "'memoryMaxpercentage':'%f %%',"+
-                    "'cpuMaxPercentage':'%f %%',"+
-                    "'cpuAverage':'%f %%'}";
+                    "{ \"id\": %d, \"time\":\"%d ms\","+
+                    "\"memoryMaxpercentage\":\"%f %%\","+
+                    "\"cpuMaxPercentage\":\"%f %%\","+
+                    "\"cpuAverage\":\"%f %%\"}";
 
     public static void PerPinView(int id , PerpinViewDto perpinViewDto){
 
@@ -40,13 +38,16 @@ public class PerPinView {
                     performanceDto.getCpuPercentage()*100
             );
         }).collect(Collectors.toList());
-        final String logStrings = String.join("\n",dtoLogs);
-        final String summary = String.format(SummaryLog, id, perpinViewDto.getExecutionTime(),
+        final String statusLogss = String.join(",\n",dtoLogs);
+        final String summaryLog = String.format(SummaryLog, id, perpinViewDto.getExecutionTime(),
                 perpinViewDto.getMaxUsedMemoryPercentage(),
                 perpinViewDto.getMaxCpuPercentage()*100,
                 perpinViewDto.getAverageCpuPercentage()*100);
 
-        logger.info("\n"+logStrings +"\n"+ summary);
+        final String outputLog = String.format(
+                "{ \"statuses\":\n[%s], \n\"overall\":%s}", statusLogss,summaryLog
+        );
+        logger.info(outputLog);
 
     }
 }
